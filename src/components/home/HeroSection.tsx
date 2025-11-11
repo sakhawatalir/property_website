@@ -59,7 +59,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
   return (
     <section 
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-end justify-center overflow-hidden pb-20 md:pb-24"
     >
       {/* Background - Gradient fallback with optional video */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-black via-blue-950 to-blue-900">

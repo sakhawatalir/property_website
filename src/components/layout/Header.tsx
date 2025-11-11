@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -42,8 +43,8 @@ export default function Header({ locale }: HeaderProps) {
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isScrolled
-            ? 'bg-black/90 backdrop-blur-md py-3 shadow-lg border-b border-gray-800'
-            : 'bg-transparent py-6'
+            ? 'bg-black/90 backdrop-blur-md py-2 shadow-lg border-b border-gray-800'
+            : 'bg-transparent py-3'
         )}
       >
         <div className="container mx-auto px-4">
@@ -75,15 +76,14 @@ export default function Header({ locale }: HeaderProps) {
 
               {/* Logo in the center of nav */}
               <Link href={`/${locale}`} className="flex items-center gap-2 group mx-8">
-                <div className="text-2xl font-bold">
-                  <span className={cn(
-                    "transition-colors duration-300",
-                    isScrolled ? "text-white" : "text-white"
-                  )}>
-                    PROPERTY
-                  </span>
-                  <span className="text-blue-500">ICON</span>
-                </div>
+                <Image
+                  src="/images/logo3.png"
+                  alt="Property Icon Logo"
+                  width={320}
+                  height={107}
+                  className="h-20 w-auto transition-transform duration-300 group-hover:scale-105"
+                  priority
+                />
               </Link>
 
               <Link
@@ -123,15 +123,14 @@ export default function Header({ locale }: HeaderProps) {
 
             {/* Logo for mobile */}
             <Link href={`/${locale}`} className="flex lg:hidden items-center gap-2 group">
-              <div className="text-xl font-bold">
-                <span className={cn(
-                  "transition-colors duration-300",
-                  isScrolled ? "text-white" : "text-white"
-                )}>
-                  PROPERTY
-                </span>
-                <span className="text-blue-500">ICON</span>
-              </div>
+              <Image
+                src="/images/logo3.png"
+                alt="Property Icon Logo"
+                width={240}
+                height={80}
+                className="h-14 w-auto transition-transform duration-300 group-hover:scale-105"
+                priority
+              />
             </Link>
 
             {/* Get In Touch button - positioned absolutely on desktop */}
