@@ -126,7 +126,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
 
         {/* Hero Text */}
         <div className="mb-12 fade-in-up">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight whitespace-pre-line">
             {t('title')}
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed opacity-90 text-gray-200">
