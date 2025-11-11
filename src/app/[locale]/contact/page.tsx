@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactInfo from '@/components/contact/ContactInfo';
 import OfficeLocation from '@/components/contact/OfficeLocation';
@@ -27,6 +28,9 @@ export async function generateMetadata({ params: { locale } }: ContactPageProps)
 }
 
 export default async function ContactPage({ params: { locale }, searchParams }: ContactPageProps) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   const t = await getTranslations({ locale, namespace: 'contact' });
 
   return (

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import HeroSection from '@/components/home/HeroSection';
 import FeaturedProperties from '@/components/home/FeaturedProperties';
 import AboutSnippet from '@/components/home/AboutSnippet';
@@ -35,6 +36,9 @@ export async function generateMetadata({ params: { locale } }: HomePageProps): P
 }
 
 export default function HomePage({ params: { locale } }: HomePageProps) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   return (
     <div className="min-h-screen">
       {/* Hero Section with Blue Gradient Background */}

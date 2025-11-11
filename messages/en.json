@@ -6,6 +6,14 @@
     "contact": "Contact",
     "faq": "FAQ"
   },
+  "portfolio": {
+    "title": "Our Portfolio",
+    "subtitle": "Successful transactions and investments"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Get answers to common questions"
+  },
   "hero": {
     "title": "Luxury Real Estate in Mallorca",
     "subtitle": "We curate villas, apartments, and commercial spaces defined by design, location, and long-term value. Discretion, speed, and white-glove service—start to keys.",

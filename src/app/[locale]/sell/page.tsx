@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import SellHero from '@/components/sell/SellHero';
 import SellProcess from '@/components/sell/SellProcess';
 import ValuationForm from '@/components/sell/ValuationForm';
@@ -28,6 +29,9 @@ export async function generateMetadata({ params: { locale } }: SellPageProps): P
 }
 
 export default async function SellPage({ params: { locale } }: SellPageProps) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}

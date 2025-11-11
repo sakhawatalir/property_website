@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import PropertyGallery from '@/components/property/PropertyGallery';
 import PropertyDetails from '@/components/property/PropertyDetails';
 import PropertyFeatures from '@/components/property/PropertyFeatures';
@@ -132,6 +133,9 @@ export async function generateMetadata({ params: { locale, slug } }: PropertyPag
 }
 
 export default async function PropertyPage({ params: { locale, slug } }: PropertyPageProps) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   const property = await getPropertyBySlug(slug);
   
   if (!property) {

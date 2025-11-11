@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import PropertiesHeader from '@/components/properties/PropertiesHeader';
 import PropertiesFilters from '@/components/properties/PropertiesFilters';
 import PropertiesGrid from '@/components/properties/PropertiesGrid';
@@ -29,6 +30,9 @@ export async function generateMetadata({ params: { locale } }: PropertiesPagePro
 }
 
 export default function PropertiesPage({ params: { locale }, searchParams }: PropertiesPageProps) {
+  // Enable static rendering
+  setRequestLocale(locale);
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}

@@ -61,8 +61,10 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Background - Gradient fallback with optional video */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-black via-blue-950 to-blue-900">
+        {/* Video Background (optional - only shows if video loads) */}
+        {/* For production: Upload video to Cloudinary and set NEXT_PUBLIC_HERO_VIDEO_URL in Vercel env vars */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -70,10 +72,12 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           muted
           loop
           playsInline
-          poster="/videos/hero-poster.jpg"
+          preload="auto"
         >
-          <source src="/videos/video_hero_banner.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
+          <source 
+            src={process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/videos/video_hero_banner.mp4"} 
+            type="video/mp4" 
+          />
         </video>
         
         {/* Dark overlay for better text readability */}

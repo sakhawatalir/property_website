@@ -2,9 +2,9 @@
 node_modules/
 
 # Video files (too large for Vercel)
-public/videos/*.mp4
-public/videos/*.webm
-public/videos/*.mov
+# public/videos/*.mp4
+# public/videos/*.webm
+# public/videos/*.mov
 
 # Local env files
 .env*.local
