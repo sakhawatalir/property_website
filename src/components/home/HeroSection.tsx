@@ -64,7 +64,7 @@ export default function HeroSection({ locale }: HeroSectionProps) {
       {/* Background - Gradient fallback with optional video */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-black via-blue-950 to-blue-900">
         {/* Video Background (optional - only shows if video loads) */}
-        {/* For production: Upload video to Cloudinary and set NEXT_PUBLIC_HERO_VIDEO_URL in Vercel env vars */}
+        {/* Using compressed video for production (5.49MB), original for localhost (195MB) */}
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -75,7 +75,11 @@ export default function HeroSection({ locale }: HeroSectionProps) {
           preload="auto"
         >
           <source 
-            src={process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/videos/video_hero_banner.mp4"} 
+            src={
+              process.env.NODE_ENV === 'production' 
+                ? "/videos/video-hero-banner_tpzrhea8.mp4"  // Compressed for Vercel (5.49MB)
+                : "/videos/video_hero_banner.mp4"            // Original for localhost (195MB)
+            }
             type="video/mp4" 
           />
         </video>

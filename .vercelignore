@@ -1,10 +1,10 @@
 # Dependencies
 node_modules/
 
-# Video files (too large for Vercel)
-# public/videos/*.mp4
-# public/videos/*.webm
-# public/videos/*.mov
+# Video files (exclude large original, include compressed)
+public/videos/video_hero_banner.mp4
+# Keep compressed video for deployment
+!public/videos/video-hero-banner_tpzrhea8.mp4
 
 # Local env files
 .env*.local
