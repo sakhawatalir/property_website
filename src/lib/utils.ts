@@ -66,8 +66,8 @@ export function createSearchParams(filters: Record<string, any>): string {
 
 export function parseSearchParams(searchParams: URLSearchParams): Record<string, any> {
   const filters: Record<string, any> = {};
-  
-  for (const [key, value] of searchParams) {
+
+  searchParams.forEach((value, key) => {
     if (filters[key]) {
       if (Array.isArray(filters[key])) {
         filters[key].push(value);
@@ -77,8 +77,8 @@ export function parseSearchParams(searchParams: URLSearchParams): Record<string,
     } else {
       filters[key] = value;
     }
-  }
-  
+  });
+
   return filters;
 }
 
