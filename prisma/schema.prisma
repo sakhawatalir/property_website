@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Admin {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model Property {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  status      String   // "sold", "available", "leased", etc.
+  type        String   // "residential", "commercial", etc.
+  year        Int?
+  price       Float
+  bedrooms    Int?
+  bathrooms   Int?
+  area        Float?
+  location    String
+  coordinates String?  // JSON string for lat/lng
+  featured    Boolean  @default(false)
+  images      String[] // Array of image URLs
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  translations PropertyTranslation[]
+
+  @@map("properties")
+}
+
+model PropertyTranslation {
+  id         String   @id @default(uuid())
+  propertyId String
+  locale     String   // "en", "de", "es"
+  title      String
+  description String  @db.Text
+  subtitle   String?
+  features   String[] // Array of feature strings
+  
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, locale])
+  @@map("property_translations")
+}
+

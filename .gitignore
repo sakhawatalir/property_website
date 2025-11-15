@@ -38,3 +38,6 @@ next-env.d.ts
 
 # videos (exclude large original only, keep compressed)
 public/videos/video_hero_banner.mp4
+
+# uploaded images (uncomment if you don't want to track uploads in git)
+# public/uploads/
